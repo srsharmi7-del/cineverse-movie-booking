@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINÉVERSE | Experience Cinema</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a href="#home" class="logo">CINÉVERSE</a>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#footer">About</a>
+        <a href="#" id="myBookingsLink">My Bookings</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p class="eyebrow">YOUR WORLD OF ENTERTAINMENT</p>
+        <h1>Experience the <span>Magic</span> of Cinema</h1>
+        <p>Discover stories, explore unforgettable movies and make every movie night special.</p>
+        <button class="gold-btn" onclick="document.getElementById('movies').scrollIntoView()">
+            EXPLORE MOVIES
+        </button>
+    </div>
+</section>
+
+<section id="movies">
+    <div class="section-title">
+        <p class="eyebrow">FIND YOUR NEXT FAVOURITE</p>
+        <h2>Explore <span>Movies</span></h2>
+    </div>
+
+    <div class="filters">
+        <input type="text" id="searchInput" placeholder="Search movies...">
+
+        <select id="languageFilter">
+            <option value="all">All Languages</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Malayalam">Malayalam</option>
+            <option value="Japanese">Japanese</option>
+        </select>
+
+        <select id="genreFilter">
+            <option value="all">All Genres</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Romance">Romance</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Musical">Musical</option>
+            <option value="Animation">Animation</option>
+            <option value="Fantasy">Fantasy</option>
+        </select>
+    </div>
+
+    <div class="category-list">
+        <button class="category-btn active" data-category="all">All Movies</button>
+        <button class="category-btn" data-category="Hollywood">Hollywood</button>
+        <button class="category-btn" data-category="Indian">Indian</button>
+        <button class="category-btn" data-category="Tamil">Tamil</button>
+        <button class="category-btn" data-category="Malayalam">Malayalam</button>
+        <button class="category-btn" data-category="Anime">Anime</button>
+    </div>
+
+    <div class="movie-grid" id="movieGrid"></div>
+    <div class="empty-state" id="emptyState">No movies found. Try another search.</div>
+</section>
+
+<section class="experience">
+    <p class="eyebrow">MORE THAN JUST A MOVIE</p>
+    <h2>Your next <span>cinema experience</span> awaits.</h2>
+    <p>Choose your movie, select your seats and enjoy the show.</p>
+</section>
+
+<footer id="footer">
+    <div class="logo">CINÉVERSE</div>
+    <p>Your world. Your stories. Your cinema.</p>
+    <p class="copyright">© 2026 CINÉVERSE | Experience Cinema</p>
+</footer>
+
+<div id="modalContainer"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
