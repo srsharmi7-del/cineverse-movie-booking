@@ -10,6 +10,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
@@ -44,7 +45,8 @@ header {
 
 nav {
     display: flex;
-    gap: 28px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 nav a {
@@ -92,7 +94,8 @@ nav a:hover {
 
 .hero h1 span,
 .section-title h2 span,
-.experience h2 span {
+.experience h2 span,
+.booking-section-content h2 span {
     color: #e8c66a;
 }
 
@@ -132,6 +135,12 @@ nav a:hover {
     font-size: 34px;
 }
 
+.section-description {
+    color: #aaa;
+    margin-top: 12px;
+    line-height: 1.7;
+}
+
 .filters {
     display: flex;
     flex-wrap: wrap;
@@ -166,11 +175,19 @@ nav a:hover {
 
 /* CATEGORIES */
 
-.category-list {
+.category-list,
+.genre-category-list {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 11px;
-    margin-bottom: 32px;
+    margin-bottom: 25px;
+}
+
+.genre-category-list > span {
+    color: #aaa;
+    font-size: 13px;
+    margin-right: 5px;
 }
 
 .category-btn {
@@ -245,6 +262,7 @@ nav a:hover {
     color: #aaa;
     font-size: 13px;
     margin-bottom: 13px;
+    line-height: 1.6;
 }
 
 .movie-details h4 {
@@ -276,13 +294,98 @@ nav a:hover {
     color: #aaa;
 }
 
+/* THEATRES */
+
+#theatres {
+    padding: 65px 6%;
+    background: #101116;
+    border-top: 1px solid #332b1b;
+    border-bottom: 1px solid #332b1b;
+}
+
+.theatre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 22px;
+}
+
+.theatre-card {
+    background: #191a20;
+    border: 1px solid #51452d;
+    border-radius: 12px;
+    padding: 25px;
+    transition: .25s;
+}
+
+.theatre-card:hover {
+    transform: translateY(-5px);
+    border-color: #e8c66a;
+}
+
+.theatre-icon {
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.theatre-card h3 {
+    color: #e8c66a;
+    margin-bottom: 12px;
+    font-size: 19px;
+}
+
+.theatre-card p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.theatre-card .theatre-location {
+    color: #ddd;
+    font-weight: bold;
+}
+
+.theatre-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 7px 12px;
+    border: 1px solid #88713c;
+    border-radius: 20px;
+    color: #e8c66a;
+    font-size: 12px;
+}
+
+/* BOOKING SECTION */
+
+#booking {
+    padding: 75px 20px;
+    text-align: center;
+    background: linear-gradient(120deg,#17130b,#101116);
+    border-bottom: 1px solid #332b1b;
+}
+
+.booking-section-content {
+    max-width: 650px;
+    margin: auto;
+}
+
+.booking-section-content h2 {
+    font-size: 34px;
+    margin-bottom: 17px;
+}
+
+.booking-section-content > p:not(.eyebrow) {
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
 /* EXPERIENCE */
 
 .experience {
     text-align: center;
     padding: 75px 20px;
     background: linear-gradient(120deg,#17130b,#101116);
-    border-top: 1px solid #332b1b;
     border-bottom: 1px solid #332b1b;
 }
 
@@ -295,6 +398,63 @@ nav a:hover {
     color: #aaa;
 }
 
+/* CONTACT */
+
+#contact {
+    padding: 65px 6%;
+    text-align: center;
+    background: #101116;
+    border-bottom: 1px solid #332b1b;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+    gap: 22px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.contact-card {
+    background: #191a20;
+    border: 1px solid #51452d;
+    border-radius: 12px;
+    padding: 25px 15px;
+    transition: .25s;
+}
+
+.contact-card:hover {
+    border-color: #e8c66a;
+    transform: translateY(-4px);
+}
+
+.contact-icon {
+    color: #e8c66a;
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    color: #e8c66a;
+    margin-bottom: 12px;
+}
+
+.contact-card p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.contact-card a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: #e8c66a;
+}
+
 /* FOOTER */
 
 footer {
@@ -304,11 +464,43 @@ footer {
 }
 
 footer .logo {
+    display: inline-block;
     margin-bottom: 12px;
 }
 
+.footer-links,
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 22px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 13px;
+    transition: .2s;
+}
+
+.footer-links a:hover {
+    color: #e8c66a;
+}
+
+.social-links a {
+    color: #e8c66a;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.social-links a:hover {
+    color: white;
+}
+
 .copyright {
-    margin-top: 20px;
+    margin-top: 25px;
     font-size: 12px;
 }
 
@@ -359,6 +551,7 @@ footer .logo {
         opacity: 0;
         transform: scale(.93) translateY(15px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -555,16 +748,24 @@ footer .logo {
 
 /* RESPONSIVE */
 
-@media(max-width:600px) {
+@media(max-width:800px) {
     header {
         flex-direction: column;
         gap: 15px;
     }
 
     nav {
-        flex-wrap: wrap;
         justify-content: center;
-        gap: 16px;
+    }
+}
+
+@media(max-width:600px) {
+    nav {
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 13px;
     }
 
     .popup-movie img {
