@@ -1,92 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CINÉVERSE | Experience Cinema</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-    <a href="#home" class="logo">CINÉVERSE</a>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#movies">Movies</a>
-        <a href="#footer">About</a>
-        <a href="#" id="myBookingsLink">My Bookings</a>
-    </nav>
-</header>
+    <!-- HEADER -->
 
-<section class="hero" id="home">
-    <div class="hero-content">
-        <p class="eyebrow">YOUR WORLD OF ENTERTAINMENT</p>
-        <h1>Experience the <span>Magic</span> of Cinema</h1>
-        <p>Discover stories, explore unforgettable movies and make every movie night special.</p>
-        <button class="gold-btn" onclick="document.getElementById('movies').scrollIntoView()">
-            EXPLORE MOVIES
-        </button>
-    </div>
-</section>
+    <header>
 
-<section id="movies">
-    <div class="section-title">
-        <p class="eyebrow">FIND YOUR NEXT FAVOURITE</p>
-        <h2>Explore <span>Movies</span></h2>
-    </div>
+        <a href="#home" class="logo">CINÉVERSE</a>
 
-    <div class="filters">
-        <input type="text" id="searchInput" placeholder="Search movies...">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#theatres">Theatres</a>
+            <a href="#booking">Booking</a>
+            <a href="#contact">Contact</a>
+            <a href="#footer">About</a>
+            <a href="#" id="myBookingsLink">My Bookings</a>
+        </nav>
 
-        <select id="languageFilter">
-            <option value="all">All Languages</option>
-            <option value="English">English</option>
-            <option value="Hindi">Hindi</option>
-            <option value="Tamil">Tamil</option>
-            <option value="Malayalam">Malayalam</option>
-            <option value="Japanese">Japanese</option>
-        </select>
+    </header>
 
-        <select id="genreFilter">
-            <option value="all">All Genres</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Drama">Drama</option>
-            <option value="Romance">Romance</option>
-            <option value="Sci-Fi">Sci-Fi</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Musical">Musical</option>
-            <option value="Animation">Animation</option>
-            <option value="Fantasy">Fantasy</option>
-        </select>
-    </div>
 
-    <div class="category-list">
-        <button class="category-btn active" data-category="all">All Movies</button>
-        <button class="category-btn" data-category="Hollywood">Hollywood</button>
-        <button class="category-btn" data-category="Indian">Indian</button>
-        <button class="category-btn" data-category="Tamil">Tamil</button>
-        <button class="category-btn" data-category="Malayalam">Malayalam</button>
-        <button class="category-btn" data-category="Anime">Anime</button>
-    </div>
+    <!-- HERO SECTION -->
 
-    <div class="movie-grid" id="movieGrid"></div>
-    <div class="empty-state" id="emptyState">No movies found. Try another search.</div>
-</section>
+    <section class="hero" id="home">
 
-<section class="experience">
-    <p class="eyebrow">MORE THAN JUST A MOVIE</p>
-    <h2>Your next <span>cinema experience</span> awaits.</h2>
-    <p>Choose your movie, select your seats and enjoy the show.</p>
-</section>
+        <div class="hero-content">
 
-<footer id="footer">
-    <div class="logo">CINÉVERSE</div>
-    <p>Your world. Your stories. Your cinema.</p>
-    <p class="copyright">© 2026 CINÉVERSE | Experience Cinema</p>
-</footer>
+            <p class="eyebrow">YOUR WORLD OF ENTERTAINMENT</p>
 
-<div id="modalContainer"></div>
+            <h1>
+                Experience the
+                <span>Magic</span>
+                of Cinema
+            </h1>
 
-<script src="script.js"></script>
+            <p>
+                Discover stories, explore unforgettable movies
+                and make every movie night special.
+            </p>
+
+            <button
+                class="gold-btn"
+                onclick="document.getElementById('movies').scrollIntoView({behavior:'smooth'})">
+
+                EXPLORE MOVIES
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MOVIES SECTION -->
+
+    <section id="movies">
+
+        <div class="section-title">
+
+            <p class="eyebrow">FIND YOUR NEXT FAVOURITE</p>
+
+            <h2>
+                Explore
+                <span>Movies</span>
+            </h2>
+
+        </div>
+
+
+        <!-- SEARCH AND FILTERS -->
+
+        <div class="filters">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search movies...">
+
+
+            <select id="languageFilter">
+
+                <option value="all">All Languages</option>
+
+                <option value="English">English</option>
+
+                <option value="Hindi">Hindi</option>
+
+                <option value="Tamil">Tamil</option>
+
+                <option value="Malayalam">Malayalam</option>
+
+                <option value="Japanese">Japanese</option>
+
+            </select>
+
+
+            <select id="genreFilter">
+
+                <option value="all">All Genres</option>
+
+                <option value="Action">Action</option>
+
+                <option value="Comedy">Comedy</option>
+
+                <option value="Drama">Drama</option>
+
+                <option value="Romance">Romance</option>
+
+                <option value="Thriller">Thriller</option>
+
+                <option value="Horror">Horror</option>
+
+                <option value="Sci-Fi">Sci-Fi</option>
+
+                <option value="Adventure">Adventure</option>
+
+                <option value="Musical">Musical</option>
+
+                <option value="Animation">Animation</option>
+
+                <option value="Fantasy">Fantasy</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- MOVIE CATEGORIES -->
+
+        <div class="category-list">
+
+            <button
+                class="category-btn active"
+                data-category="all">
+
+                All Movies
+
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="Hollywood">
+
+                Hollywood
+
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="Indian">
+
+                Indian
+
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="Tamil">
+
+                Tamil
+
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="Malayalam">
+
+                Malayalam
+
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="Anime">
+
+                Anime
+
+            </button>
+
+        </div>
+
+
+        <!-- GENRE CATEGORIES -->
+
+        <div class="category-list genre-category-list">
+
+            <button
+                class="category-btn genre-btn"
+                data-genre="Action">
+
+                Action
+
+            </button>
+
+            <button
+                class="category-btn genre-btn"
+                data-genre="Comedy">
+
+                Comedy
+
+            </button>
+
+            <button
+                class="category-btn genre-btn"
+                data-genre="Drama">
+
+                Drama
+
+            </button>
+
+            <button
+                class="category-btn genre-btn"
+                data-genre="Thriller">
+
+                Thriller
+
+            </button>
+
+            <button
+                class="category-btn genre-btn"
+                data-genre="Horror">
+
+                Horror
+
+            </button>
+
+            <button
+                class="category-btn genre-btn"
+                data-genre="Romance">
+
+                Romance
+
+            </button>
+
+            <button
+                class="category-btn genre-btn"
+                data-genre="Animation">
+
+                Animation
+
+            </button>
+
+        </div>
+
+
+        <!-- MOVIE CARDS GENERATED BY JAVASCRIPT -->
+
+        <div class="movie-grid" id="movieGrid"></div>
+
+
+        <!-- EMPTY SEARCH MESSAGE -->
+
+        <div class="empty-state" id="emptyState">
+
+            No movies found. Try another search.
+
+        </div>
+
+    </section>
+
+
+    <!-- THEATRES SECTION -->
+
+    <section class="theatres-section" id="theatres">
+
+        <div class="section-title">
+
+            <p class="eyebrow">YOUR CINEMA DESTINATION</p>
+
+            <h2>
+                Explore Our
+                <span>Theatres</span>
+            </h2>
+
+            <p>
+                Experience movies with comfort, quality
+                and unforgettable entertainment.
+            </p>
+
+        </div>
+
+
+        <div class="theatre-container">
+
+
+            <!-- THEATRE 1 -->
+
+            <div class="theatre-card">
+
+                <div class="theatre-icon">🎬</div>
+
+                <h3>CINÉVERSE Central</h3>
+
+                <p class="theatre-location">
+                    Coimbatore
+                </p>
+
+                <p>
+                    Enjoy the latest movies with
+                    high-quality visuals and sound.
+                </p>
+
+                <div class="theatre-features">
+
+                    <span>4K Screen</span>
+
+                    <span>Dolby Audio</span>
+
+                    <span>Comfortable Seating</span>
+
+                </div>
+
+                <a href="#movies" class="theatre-btn">
+                    Explore Movies
+                </a>
+
+            </div>
+
+
+            <!-- THEATRE 2 -->
+
+            <div class="theatre-card">
+
+                <div class="theatre-icon">🍿</div>
+
+                <h3>CINÉVERSE Grand</h3>
+
+                <p class="theatre-location">
+                    Coimbatore
+                </p>
+
+                <p>
+                    Enjoy a premium cinema experience
+                    with friends and family.
+                </p>
+
+                <div class="theatre-features">
+
+                    <span>Premium Screens</span>
+
+                    <span>Surround Sound</span>
+
+                    <span>Food & Beverages</span>
+
+                </div>
+
+                <a href="#movies" class="theatre-btn">
+                    Explore Movies
+                </a>
+
+            </div>
+
+
+            <!-- THEATRE 3 -->
+
+            <div class="theatre-card">
+
+                <div class="theatre-icon">⭐</div>
+
+                <h3>CINÉVERSE Luxe</h3>
+
+                <p class="theatre-location">
+                    Coimbatore
+                </p>
+
+                <p>
+                    Experience entertainment in a
+                    stylish and comfortable setting.
+                </p>
+
+                <div class="theatre-features">
+
+                    <span>Luxury Seating</span>
+
+                    <span>4K Projection</span>
+
+                    <span>Premium Experience</span>
+
+                </div>
+
+                <a href="#movies" class="theatre-btn">
+                    Explore Movies
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- BOOKING SECTION -->
+
+    <section class="booking-section" id="booking">
+
+        <div class="booking-content">
+
+            <p class="eyebrow">YOUR SEAT IS WAITING</p>
+
+            <h2>
+                Book Your
+                <span>Tickets</span>
+            </h2>
+
+            <p>
+                Find your favourite movie, choose a showtime,
+                select your seats and get ready for the experience.
+            </p>
+
+            <button
+                class="gold-btn"
+                onclick="document.getElementById('movies').scrollIntoView({behavior:'smooth'})">
+
+                BOOK YOUR TICKETS
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CINEMA EXPERIENCE SECTION -->
+
+    <section class="experience">
+
+        <p class="eyebrow">MORE THAN JUST A MOVIE</p>
+
+        <h2>
+            Your next
+            <span>cinema experience</span>
+            awaits.
+        </h2>
+
+        <p>
+            Choose your movie, select your seats
+            and enjoy the show.
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT SECTION -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="section-title">
+
+            <p class="eyebrow">WE WOULD LOVE TO HEAR FROM YOU</p>
+
+            <h2>
+                Get In
+                <span>Touch</span>
+            </h2>
+
+            <p>
+                Have a question or need assistance?
+                Contact our team.
+            </p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">📍</div>
+
+                <h3>Our Location</h3>
+
+                <p>Coimbatore, Tamil Nadu, India</p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">📧</div>
+
+                <h3>Email Us</h3>
+
+                <p>srsharmi7@gmail.com</p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">📞</div>
+
+                <h3>Call Us</h3>
+
+                <p>94373733737</p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer id="footer">
+
+        <div class="footer-content">
+
+            <div class="logo">CINÉVERSE</div>
+
+            <p>
+                Your world. Your stories. Your cinema.
+            </p>
+
+            <div class="social-links">
+
+                <a href="YOUR_INSTAGRAM_LINK"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    Instagram
+
+                </a>
+
+                <a href="YOUR_FACEBOOK_LINK"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    Facebook
+
+                </a>
+
+                <a href="YOUR_YOUTUBE_LINK"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    YouTube
+
+                </a>
+
+            </div>
+
+            <p class="copyright">
+
+                © 2026 CINÉVERSE | Experience Cinema
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- BOOKING POPUP CONTAINER -->
+
+    <div id="modalContainer"></div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
