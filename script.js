@@ -1,10 +1,12 @@
+
 /* =====================================
    CINÉVERSE - JAVASCRIPT
+   Optimised OMDb API Requests
 ===================================== */
 
 // 1. OMDb API KEY
 
-const OMDB_API_KEY = "a4843aa8";
+const OMDB_API_KEY = "6067e88a";
 
 
 // 2. MOVIE DATABASE
@@ -12,7 +14,7 @@ const OMDB_API_KEY = "a4843aa8";
 
 const movies = [
 
-    // FEATURED ENGLISH ANIMATION AND FAMILY MOVIES
+    // ANIMATION AND FAMILY MOVIES
 
     ["Wish Dragon","English","Animation","Hollywood",2021,7.2,160,"tt5562070"],
     ["Miraculous: Ladybug & Cat Noir, The Movie","English","Animation","Hollywood",2023,6.1,160,"tt10364034"],
@@ -21,7 +23,6 @@ const movies = [
     ["Wonka","English","Fantasy","Hollywood",2023,6.9,170,"tt6166392"],
     ["Kung Fu Panda","English","Animation","Hollywood",2008,7.6,150,"tt0441773"],
     ["Hotel Transylvania","English","Animation","Hollywood",2012,7.0,150,"tt0837562"],
-
     ["Frozen","English","Animation","Hollywood",2013,7.4,160,"tt2294629"],
     ["Frozen II","English","Animation","Hollywood",2019,6.8,160,"tt4520988"],
     ["Coco","English","Animation","Hollywood",2017,8.4,160,"tt2380307"],
@@ -55,6 +56,53 @@ const movies = [
     ["Jumanji: Welcome to the Jungle","English","Adventure","Hollywood",2017,6.9,160,"tt2283362"],
     ["Night at the Museum","English","Adventure","Hollywood",2006,6.5,150,"tt0477347"],
 
+    // ACTION MOVIES
+
+    ["The Dark Knight","English","Action","Hollywood",2008,9.0,180,"tt0468569"],
+    ["Inception","English","Action","Hollywood",2010,8.8,180,"tt1375666"],
+
+    // THRILLER MOVIES
+
+    ["Knives Out","English","Thriller","Hollywood",2019,7.9,170,"tt8946378"],
+    ["Get Out","English","Thriller","Hollywood",2017,7.8,170,"tt5052448"],
+    ["Gone Girl","English","Thriller","Hollywood",2014,8.1,170,"tt2267998"],
+    ["Shutter Island","English","Thriller","Hollywood",2010,8.2,170,"tt1130884"],
+    ["The Girl on the Train","English","Thriller","Hollywood",2016,6.5,160,"tt3631112"],
+    ["The Sixth Sense","English","Thriller","Hollywood",1999,8.2,160,"tt0167404"],
+    ["The Others","English","Thriller","Hollywood",2001,7.6,160,"tt0230600"],
+    ["Searching","English","Thriller","Hollywood",2018,7.6,160,"tt7668870"],
+    ["Joker","English","Thriller","Hollywood",2019,8.3,180,"tt7286456"],
+
+    // HORROR MOVIES
+
+    ["IT","English","Horror","Hollywood",2017,7.3,170,"tt1396484"],
+    ["IT Chapter Two","English","Horror","Hollywood",2019,6.5,170,"tt7349950"],
+    ["The Nun","English","Horror","Hollywood",2018,5.3,160,"tt5814060"],
+    ["The Nun II","English","Horror","Hollywood",2023,5.6,170,"tt10160976"],
+    ["The Conjuring","English","Horror","Hollywood",2013,7.5,170,"tt1457767"],
+    ["Annabelle Comes Home","English","Horror","Hollywood",2019,5.9,160,"tt8350360"],
+    ["The Exorcist","English","Horror","Hollywood",1973,8.1,160,"tt0070047"],
+    ["The Black Phone","English","Horror","Hollywood",2021,6.9,170,"tt7144666"],
+    ["Smile","English","Horror","Hollywood",2022,6.5,170,"tt15474916"],
+    ["The Ring","English","Horror","Hollywood",2002,7.1,160,"tt0298130"],
+    ["Scream","English","Horror","Hollywood",1996,7.4,160,"tt0117571"],
+    ["Scream VI","English","Horror","Hollywood",2023,6.5,170,"tt17663992"],
+    ["Final Destination","English","Horror","Hollywood",2000,6.7,160,"tt0195714"],
+
+    // SPIDER-MAN AND MARVEL MOVIES
+
+    ["Spider-Man","English","Action","Hollywood",2002,7.4,180,"tt0145487"],
+    ["The Avengers","English","Action","Hollywood",2012,8.0,190,"tt0848228"],
+    ["Avengers: Age of Ultron","English","Action","Hollywood",2015,7.3,190,"tt2395427"],
+    ["Captain America: The First Avenger","English","Action","Hollywood",2011,6.9,180,"tt0458339"],
+    ["Avengers: Endgame","English","Action","Hollywood",2019,8.4,200,"tt4154796"],
+    ["Doctor Strange in the Multiverse of Madness","English","Action","Hollywood",2022,6.9,190,"tt9419884"],
+    ["Thor","English","Action","Hollywood",2011,7.0,180,"tt0800369"],
+    ["Guardians of the Galaxy","English","Action","Hollywood",2014,8.0,180,"tt2015381"],
+    ["Guardians of the Galaxy Vol. 2","English","Action","Hollywood",2017,7.6,180,"tt3896198"],
+    ["Deadpool","English","Action","Hollywood",2016,8.0,180,"tt1431045"],
+    ["Black Widow","English","Action","Hollywood",2021,6.7,180,"tt3480822"],
+
     // INDIAN MOVIES
 
     ["3 Idiots","Hindi","Comedy","Indian",2009,8.4,160,"tt1187043"],
@@ -68,20 +116,27 @@ const movies = [
 
     // TAMIL MOVIES
 
-    ["96","Tamil","Romance","Tamil",2018,8.5,160,"tt7019842"],
-    ["Sita Ramam","Tamil","Romance","Tamil",2022,8.5,160,"tt20850406"],
-    ["Thiruchitrambalam","Tamil","Comedy","Tamil",2022,7.9,160,"tt15744586"],
-    ["Good Night","Tamil","Comedy","Tamil",2023,7.8,150,"tt25405440"],
+
+    ["Comali","Tamil","Comedy","Tamil",2019,6.9,160,"tt10554198"],
+    ["Doctor","Tamil","Comedy","Tamil",2021,7.4,170,"tt11934846"],
+    ["Vada Chennai","Tamil","Crime","Tamil",2018,8.4,170,"tt5959980"],
+    ["Sarpatta Parambarai","Tamil","Drama","Tamil",2021,8.5,170,"tt11580854"],
+    ["Anbe Sivam","Tamil","Drama","Tamil",2003,8.6,160,"tt0367495"],
+    ["Kaaka Muttai","Tamil","Comedy","Tamil",2014,8.0,150,"tt3973410"],
 
     // MALAYALAM MOVIES
 
     ["Bangalore Days","Malayalam","Drama","Malayalam",2014,8.3,160,"tt3668162"],
     ["Ustad Hotel","Malayalam","Drama","Malayalam",2012,8.2,150,"tt2218988"],
     ["Hridayam","Malayalam","Romance","Malayalam",2022,8.0,160,"tt11375428"],
-    ["Sudani from Nigeria","Malayalam","Comedy","Malayalam",2018,8.2,150,"tt7691572"],
     ["Premam","Malayalam","Romance","Malayalam",2015,8.3,150,"tt4679210"],
     ["Ohm Shanthi Oshaana","Malayalam","Romance","Malayalam",2014,7.7,150,"tt3517192"],
+    ["Guruvayoor Ambalanadayil","Malayalam","Comedy","Malayalam",2024,6.8,170,"tt26758372"],
+    ["Minnal Murali","Malayalam","Action","Malayalam",2021,7.8,170,"tt7268738"],
+    ["Aavesham","Malayalam","Action","Malayalam",2024,7.8,170,"tt26660021"],
+    ["Manjummel Boys","Malayalam","Thriller","Malayalam",2024,8.2,170,"tt24268454"],
     ["Sarvam Maya","Malayalam","Comedy","Malayalam",2025,7.7,160,"tt32362695"],
+
     // ANIME
 
     ["Spirited Away","Japanese","Animation","Anime",2001,8.6,160,"tt0245429"],
@@ -96,16 +151,17 @@ const movies = [
 
 // 3. CONVERT MOVIE DATA
 
-const movieList = movies.map((m,i)=>({
-    id:i+1,
-    title:m[0],
-    language:m[1],
-    genre:m[2],
-    category:m[3],
-    year:m[4],
-    rating:m[5],
-    price:m[6],
-    imdbId:m[7]
+const movieList = movies.map((m, i) => ({
+    id: i + 1,
+    title: m[0],
+    language: m[1],
+    genre: m[2],
+    category: m[3],
+    year: m[4],
+    rating: m[5],
+    price: m[6],
+    imdbId: m[7],
+    runtime: "Loading duration..."
 }));
 
 
@@ -137,22 +193,97 @@ function getPoster(movie) {
 }
 
 
-// 7. LOAD POSTERS USING IMDb IDs
+// 7. API REQUEST CONTROL
 
-async function loadMoviePoster(movie,poster,card) {
+const today = new Date().toDateString();
 
-    const cacheKey = "poster_" + movie.imdbId;
-    const cached = localStorage.getItem(cacheKey);
+const quotaKey = "omdb_quota_" + today;
 
-    if(cached) {
-        poster.src = cached;
-        return true;
+let quotaReached =
+    localStorage.getItem(quotaKey) === "true";
+
+const loadingMovies = new Set();
+const posterQueue = [];
+const queuedMovies = new Set();
+
+let activeRequests = 0;
+
+const MAX_REQUESTS = 2;
+
+
+// 8. UPDATE MOVIE DURATION
+
+function updateMovieRuntime(movie) {
+
+    const runtimeElement =
+        document.getElementById("runtime-" + movie.id);
+
+    if (runtimeElement) {
+        runtimeElement.textContent = movie.runtime;
     }
 
-    if(!OMDB_API_KEY || OMDB_API_KEY === "YOUR_NEW_API_KEY") {
-        console.error("Please add your new OMDb API key.");
-        return false;
+    const popupRuntime =
+        document.getElementById("popupRuntime");
+
+    if (
+        currentMovie &&
+        currentMovie.id === movie.id &&
+        popupRuntime
+    ) {
+        popupRuntime.textContent =
+            "Duration: " + movie.runtime;
     }
+}
+
+
+// 9. FETCH MOVIE POSTER
+
+async function loadMoviePoster(movie, poster) {
+
+    const posterKey = "poster_" + movie.imdbId;
+    const runtimeKey = "runtime_" + movie.imdbId;
+
+    const checkedKey =
+        "omdb_checked_" + today + "_" + movie.imdbId;
+
+    const cachedPoster =
+        localStorage.getItem(posterKey);
+
+    const cachedRuntime =
+        localStorage.getItem(runtimeKey);
+
+    // Use cached poster
+    if (cachedPoster) {
+        poster.src = cachedPoster;
+    }
+
+    // Use cached runtime
+    if (cachedRuntime) {
+        movie.runtime = cachedRuntime;
+        updateMovieRuntime(movie);
+    }
+
+    // Already have the poster
+    if (cachedPoster) {
+        return;
+    }
+
+    // Already checked this movie today
+    if (localStorage.getItem(checkedKey)) {
+        return;
+    }
+
+    // Daily limit already reached
+    if (quotaReached) {
+        return;
+    }
+
+    // Prevent duplicate requests
+    if (loadingMovies.has(movie.imdbId)) {
+        return;
+    }
+
+    loadingMovies.add(movie.imdbId);
 
     try {
 
@@ -160,137 +291,418 @@ async function loadMoviePoster(movie,poster,card) {
             `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movie.imdbId}`;
 
         const response = await fetch(url);
-        const data = await response.json();
 
-        if(data.Response === "True" &&
-           data.Poster &&
-           data.Poster !== "N/A") {
-
-            localStorage.setItem(cacheKey,data.Poster);
-            poster.src = data.Poster;
-            return true;
-
-        } else {
-            console.log("Poster unavailable:",movie.title,data.Error);
-            card.remove();
-            updateEmptyState();
-            return false;
+        if (!response.ok) {
+            throw new Error("HTTP error: " + response.status);
         }
 
-    } catch(error) {
-        console.error("Poster loading failed:",movie.title,error);
-        card.remove();
-        updateEmptyState();
-        return false;
+        const data = await response.json();
+
+        // Stop all requests if quota is exhausted
+        if (data.Error === "Request limit reached!") {
+
+            quotaReached = true;
+
+            localStorage.setItem(quotaKey, "true");
+
+            console.warn("OMDb daily limit reached.");
+
+            return;
+        }
+
+        // Invalid API key
+        if (data.Error === "Invalid API key!") {
+
+            quotaReached = true;
+
+            console.error("Invalid OMDb API key.");
+
+            return;
+        }
+
+        // Mark the movie as checked today
+        localStorage.setItem(checkedKey, "true");
+
+        if (data.Response === "True") {
+
+            if (
+                data.Poster &&
+                data.Poster !== "N/A"
+            ) {
+
+                localStorage.setItem(
+                    posterKey,
+                    data.Poster
+                );
+
+                poster.src = data.Poster;
+            }
+
+            if (
+                data.Runtime &&
+                data.Runtime !== "N/A"
+            ) {
+
+                movie.runtime = data.Runtime;
+
+                localStorage.setItem(
+                    runtimeKey,
+                    data.Runtime
+                );
+
+            } else {
+
+                movie.runtime = "Duration unavailable";
+            }
+
+        } else {
+
+            movie.runtime = "Duration unavailable";
+
+            console.log(
+                "Movie unavailable:",
+                movie.title,
+                data.Error
+            );
+        }
+
+    } catch (error) {
+
+        console.error(
+            "OMDb loading failed:",
+            movie.title,
+            error
+        );
+
+    } finally {
+
+        loadingMovies.delete(movie.imdbId);
+
+        updateMovieRuntime(movie);
     }
 }
 
 
-// 8. UPDATE EMPTY MESSAGE
+// 10. POSTER REQUEST QUEUE
 
-function updateEmptyState() {
-    emptyState.style.display =
-        movieGrid.children.length === 0 ? "block" : "none";
+function processPosterQueue() {
+
+    while (
+        activeRequests < MAX_REQUESTS &&
+        posterQueue.length > 0 &&
+        !quotaReached
+    ) {
+
+        const item = posterQueue.shift();
+
+        queuedMovies.delete(item.movie.imdbId);
+
+        activeRequests++;
+
+        loadMoviePoster(
+            item.movie,
+            item.poster
+        ).finally(() => {
+
+            activeRequests--;
+
+            processPosterQueue();
+        });
+    }
 }
 
 
-// 9. DISPLAY MOVIES
+// 11. ADD MOVIE TO POSTER QUEUE
 
-function displayMovies(list=movieList) {
+function queuePoster(movie, poster) {
+
+    const posterKey = "poster_" + movie.imdbId;
+
+    const checkedKey =
+        "omdb_checked_" + today + "_" + movie.imdbId;
+
+    // Cached poster: no request needed
+    const cachedPoster =
+        localStorage.getItem(posterKey);
+
+    if (cachedPoster) {
+        poster.src = cachedPoster;
+        return;
+    }
+
+    // Already checked today
+    if (localStorage.getItem(checkedKey)) {
+        return;
+    }
+
+    // Daily quota exhausted
+    if (quotaReached) {
+        return;
+    }
+
+    // Already queued
+    if (queuedMovies.has(movie.imdbId)) {
+        return;
+    }
+
+    queuedMovies.add(movie.imdbId);
+
+    posterQueue.push({
+        movie: movie,
+        poster: poster
+    });
+
+    processPosterQueue();
+}
+
+
+// 12. LAZY LOADING OBSERVER
+
+const posterObserver = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                const movie =
+                    entry.target.movieData;
+
+                const poster =
+                    entry.target.querySelector(".movie-poster");
+
+                if (movie && poster) {
+                    queuePoster(movie, poster);
+                }
+
+                posterObserver.unobserve(entry.target);
+            }
+
+        });
+
+    },
+    {
+        rootMargin: "200px"
+    }
+);
+
+
+// 13. UPDATE EMPTY MESSAGE
+
+function updateEmptyState() {
+
+    emptyState.style.display =
+        movieGrid.children.length === 0
+            ? "block"
+            : "none";
+}
+
+
+// 14. DISPLAY MOVIES
+
+function displayMovies(list = movieList) {
+
+    // Stop observing old cards
+    posterObserver.disconnect();
+
+    // Clear pending requests that haven't started
+    posterQueue.length = 0;
+    queuedMovies.clear();
 
     movieGrid.innerHTML = "";
 
     emptyState.style.display =
         list.length === 0 ? "block" : "none";
 
-    list.forEach(movie=>{
+    list.forEach(movie => {
 
         const card = document.createElement("div");
         card.className = "movie-card";
 
         const poster = document.createElement("img");
+
         poster.className = "movie-poster";
         poster.src = getPoster(movie);
         poster.alt = movie.title;
 
+        poster.onerror = function () {
+
+            this.onerror = null;
+            this.src = getPoster(movie);
+
+        };
+
+        const cachedPoster =
+            localStorage.getItem(
+                "poster_" + movie.imdbId
+            );
+
+        if (cachedPoster) {
+            poster.src = cachedPoster;
+        }
+
+        const cachedRuntime =
+            localStorage.getItem(
+                "runtime_" + movie.imdbId
+            );
+
+        if (cachedRuntime) {
+            movie.runtime = cachedRuntime;
+        }
+
         const rating = document.createElement("span");
+
         rating.className = "movie-rating";
         rating.textContent = "★ " + movie.rating;
 
         const details = document.createElement("div");
+
         details.className = "movie-details";
 
         details.innerHTML = `
             <h3>${movie.title}</h3>
-            <p>${movie.year} · ${movie.language} · ${movie.genre}</p>
+
+            <p>
+                ${movie.year} · ${movie.language} · ${movie.genre}
+            </p>
+
+            <p id="runtime-${movie.id}">
+                ${movie.runtime}
+            </p>
+
             <h4>From ₹${movie.price}</h4>
+
             <button class="book-btn">BOOK TICKETS</button>
         `;
 
         details.querySelector(".book-btn").addEventListener(
             "click",
-            ()=>openMovie(movie)
+            () => openMovie(movie)
         );
 
-        card.append(poster,rating,details);
+        card.append(poster, rating, details);
+
+        card.movieData = movie;
+
         movieGrid.appendChild(card);
 
-        loadMoviePoster(movie,poster,card);
+        // Observe card instead of immediately requesting poster
+        posterObserver.observe(card);
+
     });
+
+    updateEmptyState();
 }
 
 
-// 10. SEARCH AND FILTER
+// 15. SEARCH AND FILTER
 
 function filterMovies() {
 
-    const search = searchInput.value.toLowerCase();
-    const language = languageFilter.value;
-    const genre = genreFilter.value;
+    const search =
+        searchInput.value.toLowerCase();
+
+    const language =
+        languageFilter.value;
+
+    const genre =
+        genreFilter.value;
 
     const activeCategory =
-        document.querySelector(".category-btn.active");
+        document.querySelector(
+            ".category-btn.active[data-category]"
+        );
 
     const category = activeCategory
         ? activeCategory.dataset.category
         : "all";
 
-    const filtered = movieList.filter(movie=>{
+    const filtered = movieList.filter(movie => {
 
         return (
             movie.title.toLowerCase().includes(search) &&
-            (language==="all" || movie.language===language) &&
-            (genre==="all" || movie.genre===genre) &&
-            (category==="all" || movie.category===category)
+            (language === "all" || movie.language === language) &&
+            (genre === "all" || movie.genre === genre) &&
+            (category === "all" || movie.category === category)
         );
+
     });
 
     displayMovies(filtered);
 }
 
-searchInput.addEventListener("input",filterMovies);
-languageFilter.addEventListener("change",filterMovies);
-genreFilter.addEventListener("change",filterMovies);
+searchInput.addEventListener("input", filterMovies);
+languageFilter.addEventListener("change", filterMovies);
+genreFilter.addEventListener("change", filterMovies);
 
-document.querySelectorAll(".category-btn").forEach(button=>{
 
-    button.addEventListener("click",()=>{
+// 16. CATEGORY BUTTONS
 
-        document.querySelectorAll(".category-btn").forEach(btn=>{
+document.querySelectorAll(
+    ".category-btn[data-category]"
+).forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(
+            ".category-btn[data-category]"
+        ).forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        document.querySelectorAll(
+            ".genre-btn"
+        ).forEach(btn => {
             btn.classList.remove("active");
         });
 
         button.classList.add("active");
+
+        genreFilter.value = "all";
+
         filterMovies();
+
     });
+
 });
 
 
-// 11. OPEN BOOKING POPUP
+// 17. GENRE BUTTONS
+
+document.querySelectorAll(".genre-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(
+            ".genre-btn"
+        ).forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        document.querySelectorAll(
+            ".category-btn[data-category]"
+        ).forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        genreFilter.value =
+            button.dataset.genre;
+
+        filterMovies();
+
+    });
+
+});
+
+
+// 18. OPEN BOOKING POPUP
 
 function openMovie(movie) {
 
     currentMovie = movie;
+
     selectedSeats = [];
     selectedShowtime = "";
 
@@ -304,22 +716,40 @@ function openMovie(movie) {
                 <h2>Book Your Tickets</h2>
 
                 <div class="popup-movie">
-                    <img id="popupPoster" src="${getPoster(movie)}">
+
+                    <img id="popupPoster"
+                        src="${getPoster(movie)}"
+                        alt="${movie.title}">
 
                     <div>
                         <h3>${movie.title}</h3>
+
                         <p>${movie.year} · ${movie.language}</p>
+
+                        <p>Genre: ${movie.genre}</p>
+
+                        <p id="popupRuntime">
+                            Duration: ${movie.runtime}
+                        </p>
+
                         <p>⭐ ${movie.rating}</p>
+
                         <p>Ticket price: ₹${movie.price}</p>
                     </div>
+
                 </div>
 
                 <h3>Select Show Time</h3>
 
                 <div class="showtimes">
-                    ${["10:00 AM","1:30 PM","4:30 PM","7:30 PM"].map(time=>
-                        `<button type="button" onclick="selectShowtime(this,'${time}')">${time}</button>`
+
+                    ${["10:00 AM", "1:30 PM", "4:30 PM", "7:30 PM"].map(time =>
+                        `<button type="button"
+                            onclick="selectShowtime(this,'${time}')">
+                            ${time}
+                        </button>`
                     ).join("")}
+
                 </div>
 
                 <h3>Select Your Seats</h3>
@@ -346,122 +776,163 @@ function openMovie(movie) {
 
     modalContainer.style.display = "block";
 
-    loadMoviePoster(
-        movie,
-        document.getElementById("popupPoster"),
-        document.querySelector(".popup-movie")
-    );
+    const popupPoster =
+        document.getElementById("popupPoster");
+
+    const cachedPoster =
+        localStorage.getItem(
+            "poster_" + movie.imdbId
+        );
+
+    if (cachedPoster) {
+
+        popupPoster.src = cachedPoster;
+
+    } else {
+
+        queuePoster(movie, popupPoster);
+
+    }
 
     createSeats();
 }
 
 
-// 12. SELECT SHOWTIME
+// 19. SELECT SHOWTIME
 
-function selectShowtime(button,time) {
+function selectShowtime(button, time) {
 
     selectedShowtime = time;
+
     selectedSeats = [];
 
-    document.querySelectorAll(".showtimes button").forEach(btn=>{
+    document.querySelectorAll(
+        ".showtimes button"
+    ).forEach(btn => {
         btn.classList.remove("active");
     });
 
     button.classList.add("active");
 
     createSeats();
+
     updateTotal();
 }
 
 
-// 13. CLOSE POPUP
+// 20. CLOSE POPUP
 
 function closeModal(event) {
 
-    if(
+    if (
         !event ||
         event.target.classList.contains("modal-overlay") ||
         event.target.classList.contains("modal-close")
     ) {
+
         modalContainer.innerHTML = "";
+
         modalContainer.style.display = "none";
     }
 }
 
 
-// 14. SEAT STORAGE KEY
+// 21. SEAT STORAGE KEY
 
 function getSeatKey() {
+
     return currentMovie.title + "_" + selectedShowtime;
+
 }
 
 
-// 15. CREATE SEATS
+// 22. CREATE SEATS
 
 function createSeats() {
 
     const container =
         document.getElementById("seatContainer");
 
-    if(!container) return;
+    if (!container) return;
 
     container.innerHTML = "";
 
-    const rows = ["A","B","C","D","E"];
-    const booked = occupiedSeats[getSeatKey()] || [];
+    const rows = ["A", "B", "C", "D", "E"];
 
-    rows.forEach(row=>{
+    const booked =
+        occupiedSeats[getSeatKey()] || [];
+
+    rows.forEach(row => {
 
         const rowDiv = document.createElement("div");
+
         rowDiv.className = "seat-row";
 
-        for(let i=1;i<=8;i++){
+        for (let i = 1; i <= 8; i++) {
 
-            const name = row+i;
+            const name = row + i;
+
             const seat = document.createElement("button");
 
             seat.type = "button";
+
             seat.className = "seat";
+
             seat.textContent = name;
 
-            if(booked.includes(name)) {
+            if (booked.includes(name)) {
+
                 seat.classList.add("booked");
+
                 seat.disabled = true;
+
             } else {
-                seat.addEventListener("click",()=>{
+
+                seat.addEventListener("click", () => {
                     toggleSeat(name);
                 });
+
             }
 
-            if(selectedSeats.includes(name)) {
+            if (selectedSeats.includes(name)) {
+
                 seat.classList.add("selected");
+
             }
 
             rowDiv.appendChild(seat);
+
         }
 
         container.appendChild(rowDiv);
+
     });
+
 }
 
 
-// 16. SELECT AND DESELECT SEATS
+// 23. SELECT AND DESELECT SEATS
 
 function toggleSeat(name) {
 
-    if(!selectedShowtime) {
+    if (!selectedShowtime) {
+
         alert("Please select a showtime first!");
+
         return;
     }
 
-    if(selectedSeats.includes(name)) {
+    if (selectedSeats.includes(name)) {
 
-        selectedSeats = selectedSeats.filter(s=>s!==name);
+        selectedSeats =
+            selectedSeats.filter(s => s !== name);
 
     } else {
 
-        if(selectedSeats.length>=6) {
+        if (selectedSeats.length >= 6) {
+
             alert("Maximum 6 seats allowed.");
+
             return;
         }
 
@@ -469,39 +940,49 @@ function toggleSeat(name) {
     }
 
     createSeats();
+
     updateTotal();
 }
 
 
-// 17. UPDATE PRICE
+// 24. UPDATE PRICE
 
 function updateTotal() {
 
-    const total = selectedSeats.length * currentMovie.price;
+    const total =
+        selectedSeats.length * currentMovie.price;
 
-    const element = document.getElementById("totalPrice");
+    const element =
+        document.getElementById("totalPrice");
 
-    if(element) {
+    if (element) {
+
         element.textContent = "Total: ₹" + total;
+
     }
 }
 
 
-// 18. CHECKOUT
+// 25. CHECKOUT
 
 function checkout() {
 
-    if(!selectedShowtime) {
+    if (!selectedShowtime) {
+
         alert("Please select a showtime!");
+
         return;
     }
 
-    if(selectedSeats.length===0) {
+    if (selectedSeats.length === 0) {
+
         alert("Please select your seats!");
+
         return;
     }
 
-    const total = selectedSeats.length * currentMovie.price;
+    const total =
+        selectedSeats.length * currentMovie.price;
 
     modalContainer.innerHTML = `
         <div class="modal-overlay" onclick="closeModal(event)">
@@ -515,16 +996,21 @@ function checkout() {
                 <form id="bookingForm">
 
                     <label>Your Name</label>
+
                     <input type="text" id="customerName"
                         placeholder="Enter your name" required>
 
                     <label>Email Address</label>
+
                     <input type="email" id="customerEmail"
                         placeholder="Enter your email" required>
 
                     <p><strong>Movie:</strong> ${currentMovie.title}</p>
+
                     <p><strong>Showtime:</strong> ${selectedShowtime}</p>
+
                     <p><strong>Seats:</strong> ${selectedSeats.join(", ")}</p>
+
                     <p><strong>Total:</strong> ₹${total}</p>
 
                     <button type="submit" class="confirm-btn">
@@ -532,6 +1018,7 @@ function checkout() {
                     </button>
 
                 </form>
+
             </div>
         </div>
     `;
@@ -540,10 +1027,11 @@ function checkout() {
         "submit",
         confirmBooking
     );
+
 }
 
 
-// 19. CONFIRM BOOKING
+// 26. CONFIRM BOOKING
 
 function confirmBooking(event) {
 
@@ -555,43 +1043,69 @@ function confirmBooking(event) {
     const email =
         document.getElementById("customerEmail").value.trim();
 
-    if(!name || !email) return;
+    if (!name || !email) return;
 
     const key = getSeatKey();
 
-    if(!occupiedSeats[key]) {
+    if (!occupiedSeats[key]) {
+
         occupiedSeats[key] = [];
+
     }
 
-    if(selectedSeats.some(seat=>occupiedSeats[key].includes(seat))) {
+    if (
+        selectedSeats.some(
+            seat => occupiedSeats[key].includes(seat)
+        )
+    ) {
 
         alert("One of your selected seats has already been booked.");
+
         openMovie(currentMovie);
+
         return;
     }
 
     const booking = {
+
         id: Date.now(),
+
         name: name,
+
         email: email,
+
         movie: currentMovie.title,
+
         showtime: selectedShowtime,
+
         seats: [...selectedSeats],
+
         total: selectedSeats.length * currentMovie.price,
+
         date: new Date().toLocaleString()
+
     };
 
     occupiedSeats[key].push(...selectedSeats);
+
     bookings.push(booking);
 
-    localStorage.setItem("bookings",JSON.stringify(bookings));
-    localStorage.setItem("occupiedSeats",JSON.stringify(occupiedSeats));
+    localStorage.setItem(
+        "bookings",
+        JSON.stringify(bookings)
+    );
+
+    localStorage.setItem(
+        "occupiedSeats",
+        JSON.stringify(occupiedSeats)
+    );
 
     showConfirmation(booking);
+
 }
 
 
-// 20. BOOKING CONFIRMATION
+// 27. BOOKING CONFIRMATION
 
 function showConfirmation(booking) {
 
@@ -607,11 +1121,17 @@ function showConfirmation(booking) {
                 <hr style="margin:20px 0;border-color:#66552e">
 
                 <p><strong>Booking ID:</strong> ${booking.id}</p>
+
                 <p><strong>Name:</strong> ${booking.name}</p>
+
                 <p><strong>Movie:</strong> ${booking.movie}</p>
+
                 <p><strong>Showtime:</strong> ${booking.showtime}</p>
+
                 <p><strong>Seats:</strong> ${booking.seats.join(", ")}</p>
+
                 <p><strong>Total:</strong> ₹${booking.total}</p>
+
                 <p><strong>Date:</strong> ${booking.date}</p>
 
                 <button class="confirm-btn" onclick="closeModal()">
@@ -621,22 +1141,25 @@ function showConfirmation(booking) {
             </div>
         </div>
     `;
+
 }
 
 
-// 21. MY BOOKINGS
+// 28. MY BOOKINGS
 
 function showBookings() {
 
-    if(bookings.length===0) {
+    if (bookings.length === 0) {
 
         modalContainer.innerHTML = `
-            <div class="modal-overlay">
-                <div class="modal-content">
+            <div class="modal-overlay" onclick="closeModal(event)">
+
+                <div class="modal-content" onclick="event.stopPropagation()">
 
                     <button class="modal-close" onclick="closeModal()">×</button>
 
                     <h2>My Bookings</h2>
+
                     <p>No bookings yet!</p>
 
                 </div>
@@ -645,16 +1168,22 @@ function showBookings() {
 
     } else {
 
-        const cards = bookings.map(booking=>`
+        const cards = bookings.map(booking => `
 
             <div class="booking-card">
 
                 <h3>${booking.movie}</h3>
+
                 <p>Booking ID: ${booking.id}</p>
+
                 <p>Name: ${booking.name}</p>
+
                 <p>Showtime: ${booking.showtime}</p>
+
                 <p>Seats: ${booking.seats.join(", ")}</p>
+
                 <p>Total: ₹${booking.total}</p>
+
                 <p>Date: ${booking.date}</p>
 
             </div>
@@ -662,8 +1191,9 @@ function showBookings() {
         `).join("");
 
         modalContainer.innerHTML = `
-            <div class="modal-overlay">
-                <div class="modal-content">
+            <div class="modal-overlay" onclick="closeModal(event)">
+
+                <div class="modal-content" onclick="event.stopPropagation()">
 
                     <button class="modal-close" onclick="closeModal()">×</button>
 
@@ -677,19 +1207,24 @@ function showBookings() {
     }
 
     modalContainer.style.display = "block";
+
 }
 
 
-// 22. MY BOOKINGS BUTTON
+// 29. MY BOOKINGS BUTTON
 
-document.getElementById("myBookingsLink").addEventListener("click",event=>{
+document.getElementById("myBookingsLink").addEventListener(
+    "click",
+    event => {
 
-    event.preventDefault();
-    showBookings();
+        event.preventDefault();
 
-});
+        showBookings();
+
+    }
+);
 
 
-// 23. START WEBSITE
+// 30. START WEBSITE
 
 displayMovies();
